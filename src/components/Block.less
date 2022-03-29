@@ -1,0 +1,23 @@
+@import '~antd/lib/style/themes/default.less';
+.block {
+    display: inline-block;
+    line-height: 16px;
+    padding: @input-padding-vertical-base;
+    color: @btn-default-color;
+    background-color: @normal-color;
+    border-radius: @border-radius-base;
+    margin-right: @input-padding-vertical-base;
+    margin-bottom: @input-padding-vertical-base;
+    &.primary {
+        color: @btn-primary-color;
+        background-color: @btn-primary-bg;
+    }
+    &.danger {
+        color: @btn-primary-color;
+        background-color: @btn-danger-color;
+    }
+    &.success {
+        color: @btn-primary-color;
+        background-color: @success-color;
+    }
+}

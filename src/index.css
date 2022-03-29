@@ -1,0 +1,113 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+html,
+body,
+#root {
+    height: 100%;
+}
+
+.ant-layout {
+    min-height: 100%;
+}
+
+canvas {
+    display: block;
+}
+
+body {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.globalSpin {
+    width: 100%;
+    margin: 40px 0 !important;
+}
+
+.ant-spin-container {
+    overflow: visible !important;
+}
+
+.actions,
+.filter {
+    /*margin-bottom: 12px;*/
+}
+.actions2 {
+    margin-bottom: 12px;
+}
+
+.fileList {
+    margin-bottom: 12px;
+}
+
+.actions .ant-btn {
+    margin-right: 12px;
+    margin-bottom: 4px;
+}
+
+.ant-table-thead > tr > th, .ant-table-tbody > tr > td {
+    padding: 5px 5px;
+    word-break: break-all;
+}
+.ant-table-row-selected {
+    background-color: #F5222D;
+}
+
+.example-input .ant-input {
+    width: 200px;
+    margin: 0 8px 8px 0;
+}
+.editable-cell {
+    position: relative;
+}
+
+.editable-cell-value-wrap {
+    padding: 5px 12px;
+    cursor: pointer;
+}
+
+.editable-row:hover .editable-cell-value-wrap {
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    padding: 4px 11px;
+}
+
+.clickRowStyl {
+    background: #8cc8ff;
+}
+.table-color-dust {
+    background-color: #F5222D;
+}
+.table-color-dust2 {
+    background-color: #b7eb8f;
+}
+.table-color-lock {
+    background-color: #BEBEBE;
+}
+.table-color-settlement {
+    background-color: #d0d0d0;
+}
+.table-color-send-no-finish {
+    background-color: #FFAF60;
+}
+.react-resizable {
+    position: relative;
+    background-clip: padding-box;
+}
+
+.react-resizable-handle {
+    position: absolute;
+    width: 10px;
+    height: 100%;
+    bottom: 0;
+    right: -5px;
+    cursor: col-resize;
+    z-index: 1;
+}
+
+
