@@ -41,6 +41,16 @@ class List extends PureComponent {
                 width: "150px"
             },
             {
+                title: "车牌号码",
+                dataIndex: "vehicleNo",
+                width: "150px"
+            },
+            {
+                title: "发生时间",
+                dataIndex: "happenTime",
+                width: "180px"
+            },
+            {
                 title: "任务状态",
                 dataIndex: "taskStatus",
                 width: "150px"
