@@ -1,7 +1,7 @@
 import React, {PureComponent} from "react";
 import {Icon, Table, Tooltip} from "antd";
 import {connect} from "react-redux";
-import {paginationProps, tableProps} from "../../lib/ui";
+import {tableProps} from "../../lib/ui";
 import {query, reRun} from "./actions";
 import {getPrincipal} from "../../lib/identity";
 
@@ -26,9 +26,6 @@ class List extends PureComponent {
 
     render() {
         const {
-            page,
-            pageSize,
-            totalElements,
             dataSource,
             loading,
         } = this.props;
@@ -37,7 +34,7 @@ class List extends PureComponent {
                 title: "登录帐号",
                 dataIndex: "userName",
                 width: "150px"
-            },{
+            }, {
                 title: "所属公司",
                 dataIndex: "company",
                 width: "250px"
@@ -70,22 +67,12 @@ class List extends PureComponent {
             }
         ];
 
-        const tablePagination = {
-            ...paginationProps,
-            total: totalElements,
-            current: page,
-            pageSize: pageSize,
-            onShowSizeChange: (current, newSize) =>
-                this.onPageChange && this.onPageChange(1, newSize),
-            onChange: this.onPageChange
-        };
 
         return (
             <Table
                 {...tableProps}
                 columns={columns}
                 scroll={{x: 1500, y: 'calc(100vh - 350px)'}}
-                pagination={tablePagination}
                 dataSource={dataSource}
                 loading={loading}
             />
