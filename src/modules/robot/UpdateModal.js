@@ -100,6 +100,7 @@ class UpdateModal extends PureComponent {
                 if (!err) {
                     values.subRobotList = subRobotList;
                     values.id = id;
+                    values.owner = getPrincipal().id;
                     dispatch(modify(values)).then(action => {
                         if (action.error !== true) {
                             formEditor.resetFields();
