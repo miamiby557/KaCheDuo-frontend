@@ -1,7 +1,7 @@
 import React, {PureComponent} from "react";
 import {Icon, Popconfirm, Table} from "antd";
 import {connect} from "react-redux";
-import {paginationProps, tableProps} from "../../lib/ui";
+import {tableProps} from "../../lib/ui";
 import {del, query} from "./actions";
 import {getPrincipal} from "../../lib/identity";
 
@@ -16,7 +16,7 @@ class List extends PureComponent {
     handleDelete = id => {
         const {dispatch, filter} = this.props;
         dispatch(del(id)).then(() => {
-            dispatch(query({filter}));
+            dispatch(query({...filter}));
         });
     };
 
@@ -37,7 +37,7 @@ class List extends PureComponent {
             }, {
                 title: "公司名称",
                 dataIndex: "company",
-                width: "200px"
+                width: "250px"
             }, {
                 title: "微信号",
                 dataIndex: "wechat",
