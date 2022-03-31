@@ -21,24 +21,77 @@ const userRoutes = [
         }),
         hideOnMenu: true
     }, {
-        path: '/robot',
-        title: '帐号管理',
+        path: '/robot-manager',
+        title: '系统管理',
         icon: 'robot',
-        component: Loadable({
-            loader: () => import('../modules/robot'),
-            loading: Loading
-        })
+        children:[
+            {
+                path: '/robot',
+                title: '帐号管理',
+                icon: 'robot',
+                component: Loadable({
+                    loader: () => import('../modules/robot'),
+                    loading: Loading
+                })
+            }, {
+                path: '/driver',
+                title: '司机管理',
+                icon: 'team',
+                component: Loadable({
+                    loader: () => import('../modules/driver'),
+                    loading: Loading
+                })
+            }
+        ]
     }, {
-        path: '/driver',
-        title: '司机管理',
-        icon: 'team',
-        component: Loadable({
-            loader: () => import('../modules/driver'),
-            loading: Loading
-        })
+        path: '/robot-manager',
+        title: '任务查看',
+        icon: 'robot',
+        children:[
+            {
+                path: '/taskRunning',
+                title: '当前任务情况',
+                icon: 'redo',
+                component: Loadable({
+                    loader: () => import('../modules/robotTaskRunning'),
+                    loading: Loading
+                })
+            }, {
+                path: '/robotTask',
+                title: '历史任务情况',
+                icon: 'ordered-list',
+                component: Loadable({
+                    loader: () => import('../modules/robotTask'),
+                    loading: Loading
+                })
+            }
+        ]
+    }, {
+        path: '/screen-shot-manager',
+        title: '截图情况',
+        icon: 'robot',
+        children:[
+            {
+                path: '/screenShotRunning',
+                title: '当前截图任务',
+                icon: 'redo',
+                component: Loadable({
+                    loader: () => import('../modules/screenShotTaskRunning'),
+                    loading: Loading
+                })
+            }, {
+                path: '/screenShot',
+                title: '历史截图任务',
+                icon: 'ordered-list',
+                component: Loadable({
+                    loader: () => import('../modules/screenShotTask'),
+                    loading: Loading
+                })
+            }
+        ]
     }, {
         path: '/chuZhi',
-        title: '处置情况',
+        title: '处置列表',
         icon: 'check-square',
         component: Loadable({
             loader: () => import('../modules/chuZhi'),
@@ -58,22 +111,6 @@ const userRoutes = [
         icon: 'swap',
         component: Loadable({
             loader: () => import('../modules/robotLog'),
-            loading: Loading
-        })
-    }, {
-        path: '/taskRunning',
-        title: '当前任务情况',
-        icon: 'redo',
-        component: Loadable({
-            loader: () => import('../modules/robotTaskRunning'),
-            loading: Loading
-        })
-    }, {
-        path: '/robotTask',
-        title: '历史任务情况',
-        icon: 'ordered-list',
-        component: Loadable({
-            loader: () => import('../modules/robotTask'),
             loading: Loading
         })
     }
