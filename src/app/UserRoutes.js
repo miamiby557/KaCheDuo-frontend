@@ -21,9 +21,9 @@ const userRoutes = [
         }),
         hideOnMenu: true
     }, {
-        path: '/robot-manager',
+        path: '/setting',
         title: '系统管理',
-        icon: 'robot',
+        icon: 'setting',
         children:[
             {
                 path: '/robot',
@@ -46,7 +46,7 @@ const userRoutes = [
     }, {
         path: '/robot-manager',
         title: '任务查看',
-        icon: 'robot',
+        icon: 'pic-right',
         children:[
             {
                 path: '/taskRunning',
@@ -69,7 +69,7 @@ const userRoutes = [
     }, {
         path: '/screen-shot-manager',
         title: '截图情况',
-        icon: 'robot',
+        icon: 'wechat',
         children:[
             {
                 path: '/screenShotRunning',
