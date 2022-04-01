@@ -30,7 +30,7 @@ class List extends PureComponent {
                 title: "车牌号码",
                 dataIndex: "vehicleNo",
                 width: "150px"
-            },{
+            }, {
                 title: "司机微信号",
                 dataIndex: "wechat",
                 width: "250px"
@@ -44,6 +44,21 @@ class List extends PureComponent {
                 title: "创建时间",
                 dataIndex: "createTime",
                 width: "180px"
+            },
+            {
+                title: "微信截图状态",
+                dataIndex: "type",
+                width: "180px"
+            },
+            {
+                title: "微信截图",
+                dataIndex: "type",
+                width: "180px",
+                render: (text, record) => {
+                    if (record.type === '已截图') {
+                        return <span>查看</span>
+                    }
+                },
             },
             {
                 title: "发送内容",

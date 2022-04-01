@@ -94,6 +94,31 @@ class List extends PureComponent {
                 width: "180px"
             },
             {
+                title: "微信通知时间",
+                dataIndex: "messageSendTime",
+                width: "180px"
+            },
+            {
+                title: "微信回复时间",
+                dataIndex: "messageReceiveTime",
+                width: "180px"
+            },
+            {
+                title: "处理时间",
+                dataIndex: "chuLiTime",
+                width: "180px"
+            },
+            {
+                title: "微信截图",
+                dataIndex: "type",
+                width: "180px",
+                render: (text, record) => {
+                    if (record.filePath && record.filePath.length > 0) {
+                        return <span>查看</span>
+                    }
+                },
+            },
+            {
                 title: "所属公司",
                 dataIndex: "company",
                 width: "250px"
