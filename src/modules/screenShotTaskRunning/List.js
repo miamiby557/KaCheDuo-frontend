@@ -65,6 +65,7 @@ class List extends PureComponent {
                 columns={columns}
                 scroll={{x: 1500, y: 'calc(100vh - 350px)'}}
                 dataSource={dataSource}
+                pagination={{pageSize: 20}}//自定义每页显示的数据条数
                 loading={loading}
             />
         );
