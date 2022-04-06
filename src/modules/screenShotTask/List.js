@@ -33,16 +33,16 @@ class List extends PureComponent {
             }, {
                 title: "司机微信号",
                 dataIndex: "wechat",
-                width: "250px"
+                width: "200px"
             }, {
                 title: "司机微信ID",
                 dataIndex: "wxid",
-                width: "250px"
+                width: "200px"
             },
             {
                 title: "机器人微信号",
                 dataIndex: "ownerWechat",
-                width: "220px"
+                width: "200px"
             },
             {
                 title: "创建时间",
@@ -67,6 +67,7 @@ class List extends PureComponent {
             {
                 title: "发送内容",
                 dataIndex: "content",
+                width: "1000px"
             }
         ];
 
