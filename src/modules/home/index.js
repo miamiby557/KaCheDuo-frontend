@@ -41,7 +41,7 @@ class Home extends PureComponent {
             return (
                 <div>
                     {robotList.map(data => (
-                        <div style={{width: "33%", padding: '10px', float: 'left'}}>
+                        <div style={{width: "19%", padding: '10px', float: 'left'}}>
                             <Card title={data.owner + "(" + data.company + ")"} bordered={false}
                                   style={{width: '100%'}}>
                                 {data.subRobots.map(item => (
@@ -55,7 +55,11 @@ class Home extends PureComponent {
                                                 <div style={{width: '100%'}}><img src={robotNoWork} width={'100%'}
                                                                                   alt="下线"/></div>
                                             </Tooltip>}
-                                        <div style={{width: "100%", textAlign: 'center'}}>{item.phone}</div>
+                                        <div style={{
+                                            width: "100%",
+                                            textAlign: 'center',
+                                            fontSize: '1px'
+                                        }}>{item.phone}</div>
                                     </div>
                                 ))}
                             </Card>
@@ -67,7 +71,7 @@ class Home extends PureComponent {
             return (
                 <div>
                     {robotList.map(data => (
-                        <div style={{width: "33%", padding: '10px', float: 'left'}}>
+                        <div style={{width: "19%", padding: '10px', float: 'left'}}>
                             <Card title={data.owner + "组"} bordered={false}
                                   style={{width: '100%'}}>
                                 {data.subRobots.map(item => (
@@ -81,7 +85,11 @@ class Home extends PureComponent {
                                                 <div style={{width: '100%'}}><img src={robotNoWork} width={'100%'}
                                                                                   alt="下线"/></div>
                                             </Tooltip>}
-                                        <div style={{width: "100%", textAlign: 'center'}}>{item.phone}</div>
+                                        <div style={{
+                                            width: "100%",
+                                            textAlign: 'center',
+                                            fontSize: '1px'
+                                        }}>{item.phone}</div>
                                     </div>
                                 ))}
                             </Card>

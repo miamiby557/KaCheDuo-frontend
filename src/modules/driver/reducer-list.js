@@ -22,6 +22,8 @@ export default function list(state = defaultState, action) {
             return {...state, importLoading: true};
         case 'DRIVER.IMPORT':
             return {...state, importLoading: false};
+        case 'DRIVER.UPDATE_DATASOURCE':
+            return {...state, dataSource: [...payload]};
         default:
             return state;
     }
