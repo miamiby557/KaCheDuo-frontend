@@ -22,7 +22,6 @@ class ShowPicModal extends PureComponent {
                 onCancel={this.handleCancel}
                 confirmLoading={loading}
                 footer={null}
-
                 width="60%"
             >
                 <img src={baseImg} style={{ width: '100%' }}/>

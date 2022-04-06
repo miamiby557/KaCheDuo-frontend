@@ -96,22 +96,50 @@ class List extends PureComponent {
             {
                 title: "处置时间",
                 dataIndex: "disposeTime",
-                width: "180px"
+                width: "180px",
+                render: (text) => {
+                    if (text && text.length > 19) {
+                        return text.substring(0, 19);
+                    } else {
+                        return text;
+                    }
+                }
             },
             {
                 title: "微信通知时间",
                 dataIndex: "messageSendTime",
-                width: "180px"
+                width: "180px",
+                render: (text) => {
+                    if (text && text.length > 19) {
+                        return text.substring(0, 19);
+                    } else {
+                        return text;
+                    }
+                }
             },
             {
                 title: "微信回复时间",
                 dataIndex: "messageReceiveTime",
-                width: "180px"
+                width: "180px",
+                render: (text) => {
+                    if (text && text.length > 19) {
+                        return text.substring(0, 19);
+                    } else {
+                        return text;
+                    }
+                }
             },
             {
                 title: "处理时间",
                 dataIndex: "chuLiTime",
-                width: "180px"
+                width: "180px",
+                render: (text) => {
+                    if (text && text.length > 19) {
+                        return text.substring(0, 19);
+                    } else {
+                        return text;
+                    }
+                }
             },
             {
                 title: "微信截图",
