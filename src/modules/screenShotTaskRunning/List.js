@@ -31,11 +31,15 @@ class List extends PureComponent {
                 title: "司机微信号",
                 dataIndex: "wechat",
                 width: "250px"
+            }, {
+                title: "司机微信ID",
+                dataIndex: "wxid",
+                width: "250px"
             },
             {
                 title: "机器人微信号",
                 dataIndex: "ownerWechat",
-                width: "150px"
+                width: "220px"
             },
             {
                 title: "创建时间",
