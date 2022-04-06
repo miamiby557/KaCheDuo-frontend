@@ -84,6 +84,11 @@ class List extends PureComponent {
                 }
             },
             {
+                title: "发生位置",
+                dataIndex: "happenPlace",
+                width: "1000px"
+            },
+            {
                 title: "创建时间",
                 dataIndex: "gdCreateTime",
                 width: "180px"

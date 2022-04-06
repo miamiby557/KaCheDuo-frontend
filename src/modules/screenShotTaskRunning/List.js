@@ -47,6 +47,11 @@ class List extends PureComponent {
                 width: "180px"
             },
             {
+                title: "状态",
+                dataIndex: "status",
+                width: "180px"
+            },
+            {
                 title: "发送内容",
                 dataIndex: "content",
                 width: "1000px"
