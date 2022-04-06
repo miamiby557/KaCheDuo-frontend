@@ -2,7 +2,7 @@ import React, {PureComponent} from "react";
 import {Table} from "antd";
 import {connect} from "react-redux";
 import {paginationProps, tableProps} from "../../lib/ui";
-import {query} from "./actions";
+import {query, showPic} from "./actions";
 import {getPrincipal} from "../../lib/identity";
 
 class List extends PureComponent {
@@ -15,6 +15,11 @@ class List extends PureComponent {
     onPageChange = (page, pageSize) => {
         const {dispatch, filter} = this.props;
         dispatch(query({"owner": getPrincipal().id, ...filter, page, pageSize}));
+    };
+
+    show = record => {
+        const {dispatch} = this.props;
+        dispatch(showPic(record));
     };
 
     render() {
@@ -60,7 +65,7 @@ class List extends PureComponent {
                 width: "180px",
                 render: (text, record) => {
                     if (record.type === '已截图') {
-                        return <span>查看</span>
+                        return <a onClick={() => this.show(record)}>查看</a>
                     }
                 },
             },
