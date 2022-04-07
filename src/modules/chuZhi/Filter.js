@@ -21,7 +21,9 @@ class Filter extends PureComponent {
     };
 
     render() {
-        const {loading} = this.props;
+        const {loading, robots} = this.props;
+        const userNameList = [];
+        robots.forEach(name=>userNameList.push({'name': name}));
         const filterSchema = [
             {
                 key: 'vehicleNo',
@@ -41,6 +43,20 @@ class Filter extends PureComponent {
                 fieldOptions: {
                     initialValue: this.state.happenTime
                 }
+            }, {
+                key: 'userName',
+                field: 'userName',
+                type: 'listSelector',
+                expandable: true,
+                title: '登录帐号',
+                fieldOptions: {
+                    initialValue: this.state.userName
+                },
+                controlProps: {
+                    dataSource: userNameList,
+                    labelField: "name",
+                    valueField: "name"
+                }
             }
         ];
         return (
@@ -51,7 +67,8 @@ class Filter extends PureComponent {
 
 const mapStateToProps = state => {
     return {
-        ...state.chuZhi.list
+        ...state.chuZhi.list,
+        robots: state.location.list.robots
     };
 };
 

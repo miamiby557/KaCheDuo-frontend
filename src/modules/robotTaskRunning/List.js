@@ -52,7 +52,14 @@ class List extends PureComponent {
             {
                 title: "发生时间",
                 dataIndex: "happenTime",
-                width: "180px"
+                width: "180px",
+                render: (text) => {
+                    if (text && text.length > 19) {
+                        return text.substring(0, 19);
+                    } else {
+                        return text;
+                    }
+                }
             },
             {
                 title: "任务状态",

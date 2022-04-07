@@ -4,12 +4,14 @@ import {connect} from "react-redux";
 import {paginationProps, tableProps} from "../../lib/ui";
 import {query} from "./actions";
 import {getPrincipal} from "../../lib/identity";
+import {getLocationRobots} from "../location/actions";
 
 class List extends PureComponent {
 
     componentWillMount() {
         const {dispatch} = this.props;
         dispatch(query({"owner": getPrincipal().id}));
+        dispatch(getLocationRobots(getPrincipal().id));
     };
 
     onPageChange = (page, pageSize) => {
