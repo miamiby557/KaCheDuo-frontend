@@ -50,6 +50,18 @@ class List extends PureComponent {
                 width: "200px"
             },
             {
+                title: "发生时间",
+                dataIndex: "happenTime",
+                width: "180px",
+                render: (text) => {
+                    if (text && text.length > 19) {
+                        return text.substring(0, 19);
+                    } else {
+                        return text;
+                    }
+                }
+            },
+            {
                 title: "创建时间",
                 dataIndex: "createTime",
                 width: "180px"
