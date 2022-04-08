@@ -208,6 +208,14 @@ class UpdateModal extends PureComponent {
                         fieldOptions: {
                             rules: [{required: true, message: '请输入所属公司'}]
                         },
+                    },
+                    {
+                        field: 'email',
+                        title: '邮箱',
+                        type: 'text',
+                        fieldOptions: {
+                            rules: [{required: true, message: '多个邮箱以英文逗号隔开'}]
+                        },
                     }
                 ]
             }, {

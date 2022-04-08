@@ -5,6 +5,7 @@ import {paginationProps, tableProps} from "../../lib/ui";
 import {query} from "./actions";
 import {getPrincipal} from "../../lib/identity";
 import {getLocationRobots} from "../location/actions";
+import {showPic} from "./actions";
 
 class List extends PureComponent {
 
@@ -17,6 +18,11 @@ class List extends PureComponent {
     onPageChange = (page, pageSize) => {
         const {dispatch, filter} = this.props;
         dispatch(query({"owner": getPrincipal().id, ...filter, page, pageSize}));
+    };
+
+    show = record => {
+        const {dispatch} = this.props;
+        dispatch(showPic(record));
     };
 
     render() {
@@ -148,10 +154,15 @@ class List extends PureComponent {
                 dataIndex: "type",
                 width: "180px",
                 render: (text, record) => {
-                    if (record.filePath && record.filePath.length > 0) {
-                        return <span>查看</span>
+                    if (record.type === '已截图') {
+                        return <a onClick={() => this.show(record)}>查看</a>
                     }
                 },
+            },
+            {
+                title: "登录账号",
+                dataIndex: "owner",
+                width: "250px"
             },
             {
                 title: "所属公司",
