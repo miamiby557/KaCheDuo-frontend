@@ -13,6 +13,7 @@ import chuZhi from "../modules/chuZhi/reducer.js";
 import location from "../modules/location/reducer.js";
 import screenShotTask from "../modules/screenShotTask/reducer.js";
 import screenShotTaskRunning from "../modules/screenShotTaskRunning/reducer.js";
+import phoneBill from "../modules/phoneBill/reducer.js";
 
 const rootReducer = combineReducers({
     home,
@@ -27,7 +28,8 @@ const rootReducer = combineReducers({
     robotTaskRunning,
     location,
     screenShotTask,
-    screenShotTaskRunning
+    screenShotTaskRunning,
+    phoneBill
 });
 
 export default rootReducer;

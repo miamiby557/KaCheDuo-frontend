@@ -106,6 +106,14 @@ const userRoutes = [
             loading: Loading
         })
     }, {
+        path: '/phone',
+        title: '外呼账单',
+        icon: 'phone',
+        component: Loadable({
+            loader: () => import('../modules/phoneBill'),
+            loading: Loading
+        })
+    }, {
         path: '/robotLog',
         title: '帐号运行情况',
         icon: 'swap',
