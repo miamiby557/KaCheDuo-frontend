@@ -28,11 +28,11 @@ class List extends PureComponent {
             {
                 title: "主叫号",
                 dataIndex: "caller",
-                width: "80px"
+                width: "180px"
             }, {
                 title: "被叫号",
                 dataIndex: "called",
-                width: "250px"
+                width: "180px"
             }, {
                 title: "总呼叫时长/秒",
                 dataIndex: "duration",
@@ -60,6 +60,10 @@ class List extends PureComponent {
             }, {
                 title: "状态",
                 dataIndex: "status",
+                width: "180px"
+            }, {
+                title: "成本/元",
+                dataIndex: "cost",
                 width: "180px"
             }, {
                 title: "参数",

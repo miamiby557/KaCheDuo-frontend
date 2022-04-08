@@ -60,7 +60,6 @@ class Filter extends PureComponent {
                     initialValue: this.state.createTimeRange
                 }
             }
-
         ];
         return (
             <FilterForm schema={filterSchema} callback={this.handleSearch} loading={loading}/>

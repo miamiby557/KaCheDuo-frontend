@@ -210,12 +210,14 @@ class UpdateModal extends PureComponent {
                         },
                     },
                     {
+                        field: 'chargePhone',
+                        title: '负责人手机号码',
+                        type: 'text'
+                    },
+                    {
                         field: 'email',
                         title: '邮箱',
-                        type: 'text',
-                        fieldOptions: {
-                            rules: [{required: true, message: '多个邮箱以英文逗号隔开'}]
-                        },
+                        type: 'text'
                     }
                 ]
             }, {
