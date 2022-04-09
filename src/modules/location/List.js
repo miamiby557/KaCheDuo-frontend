@@ -1,5 +1,5 @@
 import React, {PureComponent} from "react";
-import {Table} from "antd";
+import {Modal, Table} from "antd";
 import {connect} from "react-redux";
 import {paginationProps, tableProps} from "../../lib/ui";
 import {getLocationRobots, query} from "./actions";
@@ -16,6 +16,19 @@ class List extends PureComponent {
     onPageChange = (page, pageSize) => {
         const {dispatch, filter} = this.props;
         dispatch(query({"owner": getPrincipal().id, ...filter, page, pageSize}));
+    };
+
+    showContent = (content) => {
+        Modal.info({
+            title: '详细内容',
+            content: (
+                <div>
+                    <p>{content}</p>
+                </div>
+            ),
+            onOk() {
+            },
+        });
     };
 
     render() {
@@ -77,7 +90,11 @@ class List extends PureComponent {
             {
                 title: "定位位置",
                 dataIndex: "happenPlace",
-                width: "280px"
+                width: "350px",
+                render: (text, record) => (
+                    <span
+                        onClick={() => this.showContent(text)}>{text && text.length > 20 ? text.substring(0, 20) + "..." : text}</span>
+                )
             },
             {
                 title: "所属帐号",
@@ -87,7 +104,7 @@ class List extends PureComponent {
             {
                 title: "所属公司",
                 dataIndex: "userCompany",
-                width: "180px"
+                width: "230px"
             },
             {
                 title: "创建时间",

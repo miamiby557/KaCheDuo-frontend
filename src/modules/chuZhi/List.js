@@ -1,5 +1,5 @@
 import React, {PureComponent} from "react";
-import {Table} from "antd";
+import {Modal, Table} from "antd";
 import {connect} from "react-redux";
 import {paginationProps, tableProps} from "../../lib/ui";
 import {query} from "./actions";
@@ -23,6 +23,19 @@ class List extends PureComponent {
     show = record => {
         const {dispatch} = this.props;
         dispatch(showPic(record));
+    };
+
+    showContent = (content) => {
+        Modal.info({
+            title: '详细内容',
+            content: (
+                <div>
+                    <p>{content}</p>
+                </div>
+            ),
+            onOk() {
+            },
+        });
     };
 
     render() {
@@ -94,7 +107,11 @@ class List extends PureComponent {
             {
                 title: "发生位置",
                 dataIndex: "happenPlace",
-                width: "500px"
+                width: "350px",
+                render: (text, record) => (
+                    <span
+                        onClick={() => this.showContent(text)}>{text && text.length > 20 ? text.substring(0, 20) + "..." : text}</span>
+                )
             },
             {
                 title: "创建时间",
@@ -167,7 +184,11 @@ class List extends PureComponent {
             {
                 title: "所属公司",
                 dataIndex: "company",
-                width: "250px"
+                width: "250px",
+                render: (text, record) => (
+                    <span
+                        onClick={() => this.showContent(text)}>{text && text.length > 20 ? text.substring(0, 20) + "..." : text}</span>
+                )
             }
         ];
 

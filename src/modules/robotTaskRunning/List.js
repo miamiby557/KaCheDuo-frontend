@@ -1,5 +1,5 @@
 import React, {PureComponent} from "react";
-import {Icon, Table, Tooltip} from "antd";
+import {Icon, Modal, Table, Tooltip} from "antd";
 import {connect} from "react-redux";
 import {tableProps} from "../../lib/ui";
 import {query, reRun} from "./actions";
@@ -24,6 +24,19 @@ class List extends PureComponent {
         });
     };
 
+    showContent = (content) => {
+        Modal.info({
+            title: '详细内容',
+            content: (
+                <div>
+                    <p>{content}</p>
+                </div>
+            ),
+            onOk() {
+            },
+        });
+    };
+
     render() {
         const {
             dataSource,
@@ -37,7 +50,11 @@ class List extends PureComponent {
             }, {
                 title: "所属公司",
                 dataIndex: "company",
-                width: "250px"
+                width: "250px",
+                render: (text, record) => (
+                    <span
+                        onClick={() => this.showContent(text)}>{text && text.length > 20 ? text.substring(0, 20) + "..." : text}</span>
+                )
             },
             {
                 title: "任务类型",
