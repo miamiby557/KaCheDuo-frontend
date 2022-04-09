@@ -100,7 +100,7 @@ class List extends PureComponent {
                 width: "300px",
                 render: (text, record) => (
                     <span
-                        onClick={() => this.showContent(text)}>{text && text.length > 20 ? text.substring(0, 20) : text}</span>
+                        onClick={() => this.showContent(text)}>{text && text.length > 20 ? text.substring(0, 20)+"..." : text}</span>
                 )
             }
         ];
