@@ -39,7 +39,7 @@ class List extends PureComponent {
             {
                 title: "车牌号码",
                 dataIndex: "vehicleNo",
-                width: "150px"
+                width: "100px"
             }, {
                 title: "司机微信号",
                 dataIndex: "wechat",
@@ -79,7 +79,7 @@ class List extends PureComponent {
             {
                 title: "发送内容",
                 dataIndex: "content",
-                width: "300px",
+                width: "350px",
                 render: (text, record) => (
                     <span
                         onClick={() => this.showContent(text)}>{text && text.length > 20 ? text.substring(0, 20) + "..." : text}</span>
