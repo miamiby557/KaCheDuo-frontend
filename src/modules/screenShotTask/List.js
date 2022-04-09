@@ -1,5 +1,5 @@
 import React, {PureComponent} from "react";
-import {Table} from "antd";
+import {Modal, Table} from "antd";
 import {connect} from "react-redux";
 import {paginationProps, tableProps} from "../../lib/ui";
 import {query, showPic} from "./actions";
@@ -20,6 +20,19 @@ class List extends PureComponent {
     show = record => {
         const {dispatch} = this.props;
         dispatch(showPic(record));
+    };
+
+    showContent = (content) => {
+        Modal.info({
+            title: '详细内容',
+            content: (
+                <div>
+                    <p>{content}</p>
+                </div>
+            ),
+            onOk() {
+            },
+        });
     };
 
     render() {
@@ -84,7 +97,11 @@ class List extends PureComponent {
             {
                 title: "发送内容",
                 dataIndex: "content",
-                width: "1000px"
+                width: "300px",
+                render: (text, record) => (
+                    <span
+                        onClick={() => this.showContent(text)}>{text && text.length > 20 ? text.substring(0, 20) : text}</span>
+                )
             }
         ];
 

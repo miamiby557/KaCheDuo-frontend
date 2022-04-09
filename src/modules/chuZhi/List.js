@@ -154,7 +154,7 @@ class List extends PureComponent {
                 dataIndex: "type",
                 width: "180px",
                 render: (text, record) => {
-                    if (record.type === '已截图') {
+                    if (record.filePath) {
                         return <a onClick={() => this.show(record)}>查看</a>
                     }
                 },
