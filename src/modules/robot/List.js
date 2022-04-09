@@ -67,7 +67,12 @@ class List extends PureComponent {
                 {
                     title: "处置帐号",
                     dataIndex: "phone",
-                    width: "150px",
+                    width: "200px",
+                    render: (text, record) => {
+                        return <span>
+                        {text}{record.run ? "(启用)":"(禁用)"}
+                    </span>
+                    }
                 }, {
                     title: "处置密码",
                     dataIndex: "pwd",
@@ -82,20 +87,9 @@ class List extends PureComponent {
                         }
                     }
                 }, {
-                    title: "状态",
-                    dataIndex: "run",
-                    width: "180px",
-                    render: (text) => {
-                        if (text) {
-                            return "正常";
-                        } else {
-                            return "禁用";
-                        }
-                    }
-                }, {
                     title: "存活状态",
                     dataIndex: "alive",
-                    width: "180px",
+                    width: "100px",
                     render: (text) => {
                         if (text) {
                             return "在线";
@@ -114,13 +108,11 @@ class List extends PureComponent {
                     width: "180px",
                     align: 'center',
                     render: (text, record) => <span>
-                    <Tooltip placement="top" title={'启用'}><Icon onClick={() => this.handleStart(record.id)}
-                                                                type="redo"/></Tooltip>
-                    <Divider type="vertical"/>
-                    <Popconfirm title="确定停止?" okText="是" cancelText="否"
-                                onConfirm={() => this.handleStop(record.id)}>
-                        <Tooltip placement="top" title={'禁用'}><Icon type="stop"/></Tooltip>
-                    </Popconfirm>
+                        {record.run ? <Popconfirm title="确定停止处置?" okText="是" cancelText="否"
+                                                  onConfirm={() => this.handleStop(record.id)}>
+                            <Tooltip placement="top" title={'禁用'}><a>停止处置</a></Tooltip>
+                        </Popconfirm>:<a onClick={() => this.handleStart(record.id)}
+                                         type="redo">启动处置</a>}
                 </span>,
                 }, {
                     title: "",
@@ -133,16 +125,18 @@ class List extends PureComponent {
             {
                 title: "监控帐号",
                 dataIndex: "phone",
-                width: "150px",
-                render: (text, record) => (
-                    <a
-                        onClick={() => {
-                            this.handleShowEdit(record);
-                        }}
-                    >
+                width: "200px",
+                render: (text, record) => {
+                    return <span>
+                        <a
+                            onClick={() => {
+                                this.handleShowEdit(record);
+                            }}
+                        >
                         {text}
-                    </a>
-                )
+                    </a>{record.run ? "(启用)":"(禁用)"}
+                    </span>
+                }
             }, {
                 title: "监控密码",
                 dataIndex: "pwd",
@@ -159,11 +153,16 @@ class List extends PureComponent {
             }, {
                 title: "(处理、位置)帐号",
                 dataIndex: "account2",
-                width: "150px"
+                width: "200px",
+                render: (text, record) => {
+                    return <span>
+                        {text}{record.run2 ? "(启用)":"(禁用)"}
+                    </span>
+                }
             }, {
                 title: "(处理、位置)密码",
                 dataIndex: "pwd2",
-                width: "150px",
+                width: "200px",
                 render: (text, record) => {
                     if (record.show2) {
                         return <span>{text}<Icon onClick={() => this.hidePWD(record.id, 'show2', false)}
@@ -178,20 +177,9 @@ class List extends PureComponent {
                 dataIndex: "company",
                 width: "250px"
             }, {
-                title: "状态",
-                dataIndex: "run",
-                width: "180px",
-                render: (text) => {
-                    if (text) {
-                        return "正常";
-                    } else {
-                        return "禁用";
-                    }
-                }
-            }, {
                 title: "存活状态",
                 dataIndex: "alive",
-                width: "180px",
+                width: "80px",
                 render: (text) => {
                     if (text) {
                         return "在线";
@@ -207,20 +195,22 @@ class List extends PureComponent {
                 title: '功能',
                 dataIndex: '',
                 key: '',
-                width: "180px",
+                width: "280px",
                 align: 'center',
                 render: (text, record) => <span>
-                    <Tooltip placement="top" title={'启用'}><Icon onClick={() => this.handleStart(record.id)}
-                                                                type="redo"/></Tooltip>
+                    {record.run ? <Popconfirm title="确定停止，子账号也会一起停止?" okText="是" cancelText="否"
+                                              onConfirm={() => this.handleStop(record.id)}>
+                        <a>停止监控</a>
+                    </Popconfirm> : <a onClick={() => this.handleStart(record.id)}>启用监控</a>}
                     <Divider type="vertical"/>
-                    <Popconfirm title="确定停止，子账号也会一起停止?" okText="是" cancelText="否"
-                                onConfirm={() => this.handleStop(record.id)}>
-                        <Tooltip placement="top" title={'禁用'}><Icon type="stop"/></Tooltip>
-                    </Popconfirm>
+                    {record.run2 ? <Popconfirm title="确定停止处理?" okText="是" cancelText="否"
+                                               onConfirm={() => this.handleStop(record.id2)}>
+                        <a>停止处理</a>
+                    </Popconfirm> : <a onClick={() => this.handleStart(record.id2)}>启用处理</a>}
                     <Divider type="vertical"/>
                     <Popconfirm title="确定删除，子账号也会一起删除?" okText="是" cancelText="否"
                                 onConfirm={() => this.handleDelete(record.id)}>
-                        <Tooltip placement="top" title={'删除'}><Icon type="delete"/></Tooltip>
+                        <Tooltip placement="top" title={'删除'}><a>删除</a></Tooltip>
                     </Popconfirm>
                 </span>,
             }, {
