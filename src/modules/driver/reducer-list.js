@@ -1,6 +1,10 @@
 const defaultState = {
     loading: false,
     dataSource: [],
+    page: 1,
+    pageSize: 20,
+    totalElements: 0,
+    filter: {},
     importLoading: false
 };
 export default function list(state = defaultState, action) {
@@ -14,10 +18,13 @@ export default function list(state = defaultState, action) {
             return {
                 ...state,
                 loading: false,
-                dataSource: [...payload]
+                dataSource: payload.content,
+                page: payload.page,
+                pageSize: payload.pageSize,
+                totalElements: payload.totalElements
             };
         case 'DRIVER.QUERY_PENDING':
-            return {...state, loading: true, filter: payload ? payload.filter : {}};
+            return {...state, loading: true, filter: {...payload}};
         case 'DRIVER.IMPORT_PENDING':
             return {...state, importLoading: true};
         case 'DRIVER.IMPORT':

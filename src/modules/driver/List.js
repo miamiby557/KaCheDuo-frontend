@@ -1,9 +1,10 @@
 import React, {PureComponent} from "react";
 import {Form, Icon, Input, Popconfirm, Table, notification} from "antd";
 import {connect} from "react-redux";
-import {tableProps} from "../../lib/ui";
+import {paginationProps, tableProps} from "../../lib/ui";
 import {del, query, updateDataSource, updateDriver} from "./actions";
 import {getPrincipal} from "../../lib/identity";
+
 const EditableContext = React.createContext();
 
 const EditableRow = ({form, index, ...props}) => (
@@ -84,7 +85,6 @@ class EditableCell extends React.Component {
 }
 
 
-
 class List extends PureComponent {
 
 
@@ -98,6 +98,11 @@ class List extends PureComponent {
         dispatch(del(id)).then(() => {
             dispatch(query({...filter}));
         });
+    };
+
+    onPageChange = (page, pageSize) => {
+        const {dispatch, filter} = this.props;
+        dispatch(query({"owner": getPrincipal().id, ...filter, page, pageSize}));
     };
 
     handleSave = row => {
@@ -116,6 +121,15 @@ class List extends PureComponent {
     };
 
     render() {
+
+        const {
+            page,
+            pageSize,
+            totalElements,
+            dataSource,
+            loading,
+        } = this.props;
+
         const columns = [
             {
                 title: "司机姓名",
@@ -160,10 +174,6 @@ class List extends PureComponent {
                 dataIndex: ""
             }
         ];
-        const {
-            dataSource,
-            loading
-        } = this.props;
 
         const editColumns = columns.map(col => {
             if (!col.editable) {
@@ -188,6 +198,16 @@ class List extends PureComponent {
             },
         };
 
+        const tablePagination = {
+            ...paginationProps,
+            total: totalElements,
+            current: page,
+            pageSize: pageSize,
+            onShowSizeChange: (current, newSize) =>
+                this.onPageChange && this.onPageChange(1, newSize),
+            onChange: this.onPageChange
+        };
+
         return (
             <Table
                 {...tableProps}
@@ -195,7 +215,7 @@ class List extends PureComponent {
                 scroll={{x: 1500, y: 'calc(100vh - 350px)'}}
                 dataSource={dataSource}
                 components={components}
-                pagination={{pageSize: 50}}//自定义每页显示的数据条数
+                pagination={tablePagination}
                 loading={loading}
             />
         );
