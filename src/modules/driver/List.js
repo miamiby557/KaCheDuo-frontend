@@ -158,6 +158,11 @@ class List extends PureComponent {
                 editable: true,
                 width: "220px"
             }, {
+                title: "发消息的微信号",
+                dataIndex: "ownerWechat",
+                editable: true,
+                width: "220px"
+            }, {
                 title: '功能',
                 dataIndex: '',
                 key: '',
