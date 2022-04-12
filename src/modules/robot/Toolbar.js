@@ -12,6 +12,9 @@ class Toolbar extends PureComponent {
 
     handleSendMail = () => {
         const {dispatch} = this.props;
+        notification.success({
+            message: '正在发送，请稍等...'
+        });
         dispatch(sendMail()).then(() => {
             notification.success({
                 message: '发送成功，请查看邮箱'
