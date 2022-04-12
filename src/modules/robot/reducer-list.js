@@ -1,5 +1,8 @@
 const defaultState = {
     loading: false,
+    page: 1,
+    pageSize: 20,
+    totalElements: 0,
     dataSource: []
 };
 export default function list(state = defaultState, action) {
@@ -24,7 +27,10 @@ export default function list(state = defaultState, action) {
             return {
                 ...state,
                 loading: false,
-                dataSource: [...payload]
+                dataSource: payload.content,
+                page: payload.page,
+                pageSize: payload.pageSize,
+                totalElements: payload.totalElements
             };
         case 'ROBOT.QUERY_PENDING':
             return {...state, loading: true};

@@ -1,7 +1,7 @@
 import React, {PureComponent} from "react";
 import {Divider, Icon, Popconfirm, Table, Tooltip} from "antd";
 import {connect} from "react-redux";
-import {tableProps} from "../../lib/ui";
+import {paginationProps, tableProps} from "../../lib/ui";
 import {del, query, showUpdate, start, stop, updateDataSource, updateSubRobot} from "./actions";
 import {getPrincipal} from "../../lib/identity";
 
@@ -9,13 +9,18 @@ class List extends PureComponent {
 
     componentWillMount() {
         const {dispatch} = this.props;
-        dispatch(query(getPrincipal().id));
+        dispatch(query({'owner': getPrincipal().id}));
+    };
+
+    onPageChange = (page, pageSize) => {
+        const {dispatch, filter} = this.props;
+        dispatch(query({"owner": getPrincipal().id, ...filter, page, pageSize}));
     };
 
     handleDelete = id => {
         const {dispatch} = this.props;
         dispatch(del(id)).then(() => {
-            dispatch(query(getPrincipal().id));
+            dispatch(query({'owner': getPrincipal().id}));
         });
     };
 
@@ -28,14 +33,14 @@ class List extends PureComponent {
     handleStart = id => {
         const {dispatch} = this.props;
         dispatch(start(id)).then(() => {
-            dispatch(query(getPrincipal().id));
+            dispatch(query({'owner': getPrincipal().id}));
         });
     };
 
     handleStop = id => {
         const {dispatch} = this.props;
         dispatch(stop(id)).then(() => {
-            dispatch(query(getPrincipal().id));
+            dispatch(query({'owner': getPrincipal().id}));
         });
     };
 
@@ -219,9 +224,22 @@ class List extends PureComponent {
             }
         ];
         const {
+            page,
+            pageSize,
+            totalElements,
             dataSource,
-            loading
+            loading,
         } = this.props;
+
+        const tablePagination = {
+            ...paginationProps,
+            total: totalElements,
+            current: page,
+            pageSize: pageSize,
+            onShowSizeChange: (current, newSize) =>
+                this.onPageChange && this.onPageChange(1, newSize),
+            onChange: this.onPageChange
+        };
 
         return (
             <Table
@@ -230,7 +248,7 @@ class List extends PureComponent {
                 scroll={{x: 1500, y: 'calc(100vh - 350px)'}}
                 expandedRowRender={expandedRowRender}
                 dataSource={dataSource}
-                pagination={{pageSize: 20}}//自定义每页显示的数据条数
+                pagination={tablePagination}
                 loading={loading}
             />
         );

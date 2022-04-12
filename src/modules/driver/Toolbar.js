@@ -43,6 +43,7 @@ class Toolbar extends PureComponent {
                         <Icon type="upload"/> 导入
                     </Button>
                 </Upload>
+                <Button href={"http://175.178.222.14:9061/api/driver/downloadNoWechat/"+ getPrincipal().id} target="_blank">一键导出没有微信号的司机档案</Button>
             </div>
 
         );

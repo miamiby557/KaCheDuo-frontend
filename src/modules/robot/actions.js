@@ -10,7 +10,7 @@ export const updateSubRobot = createAction("SUB_ROBOT.UPDATE");
 export const updateDataSource = createAction("ROBOT.UPDATE_DATASOURCE");
 
 export const query = createThunkAction("ROBOT.QUERY", params =>
-    get("/robot/query/" + params)
+    postJson("/robot/query", params)
 );
 export const modify = createThunkAction("ROBOT.MODIFY", params =>
     postJson("/robot/update", params)
