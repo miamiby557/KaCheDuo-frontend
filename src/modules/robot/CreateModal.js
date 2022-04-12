@@ -104,7 +104,7 @@ class CreateModal extends PureComponent {
                         if (action.error !== true) {
                             formEditor.resetFields();
                             dispatch(hideCreate());
-                            dispatch(query(getPrincipal().id));
+                            dispatch(query({'owner': getPrincipal().id}));
                         }
                     });
                 }

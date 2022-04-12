@@ -105,7 +105,7 @@ class UpdateModal extends PureComponent {
                         if (action.error !== true) {
                             formEditor.resetFields();
                             dispatch(hideUpdate());
-                            dispatch(query(getPrincipal().id));
+                            dispatch(query({'owner': getPrincipal().id}));
                         }
                     });
                 }

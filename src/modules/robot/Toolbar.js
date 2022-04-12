@@ -1,6 +1,6 @@
 import React, {PureComponent} from "react";
 import {connect} from "react-redux";
-import {Button, Icon} from "antd";
+import {Button, Icon, notification} from "antd";
 import {sendMail, showCreate} from "./actions";
 
 class Toolbar extends PureComponent {
@@ -12,7 +12,11 @@ class Toolbar extends PureComponent {
 
     handleSendMail = () => {
         const {dispatch} = this.props;
-        dispatch(sendMail());
+        dispatch(sendMail()).then(() => {
+            notification.success({
+                message: '发送成功，请查看邮箱'
+            });
+        });
     };
 
     render() {
