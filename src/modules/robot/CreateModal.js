@@ -270,7 +270,7 @@ class CreateModal extends PureComponent {
                 confirmLoading={loading}
                 okText="保存"
                 cancelText="取消"
-                width="40%"
+                width="70%"
             >
                 <FormEditor
                     schema={schema}
