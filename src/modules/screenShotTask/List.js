@@ -1,8 +1,8 @@
 import React, {PureComponent} from "react";
-import {Modal, Table} from "antd";
+import {Icon, Modal, Table, Tooltip, notification} from "antd";
 import {connect} from "react-redux";
 import {paginationProps, tableProps} from "../../lib/ui";
-import {query, showPic} from "./actions";
+import {handleScreenShotAgain, query, showPic} from "./actions";
 import {getPrincipal} from "../../lib/identity";
 
 class List extends PureComponent {
@@ -32,6 +32,14 @@ class List extends PureComponent {
             ),
             onOk() {
             },
+        });
+    };
+
+    reScreenShot = id => {
+        const {dispatch} = this.props;
+        dispatch(handleScreenShotAgain(id));
+        notification.success({
+            message: '已经重新新建截图任务，请稍等...'
         });
     };
 
@@ -82,7 +90,11 @@ class List extends PureComponent {
             {
                 title: "微信截图状态",
                 dataIndex: "type",
-                width: "180px"
+                width: "180px",
+                render: (text, record) => {
+                    return <span>{text}<Tooltip placement="top" title={"重新截图"}><Icon
+                        onClick={() => this.reScreenShot(record.id)} type="undo"/></Tooltip></span>
+                },
             },
             {
                 title: "微信截图",
@@ -100,7 +112,7 @@ class List extends PureComponent {
                 width: "350px",
                 render: (text, record) => (
                     <span
-                        onClick={() => this.showContent(text)}>{text && text.length > 20 ? text.substring(0, 20)+"..." : text}</span>
+                        onClick={() => this.showContent(text)}>{text && text.length > 20 ? text.substring(0, 20) + "..." : text}</span>
                 )
             }
         ];
