@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {paginationProps, tableProps} from "../../lib/ui";
 import {handleAgain, query} from "./actions";
 import {getPrincipal} from "../../lib/identity";
+import {showPic} from "./actions";
 
 class List extends PureComponent {
 
@@ -18,12 +19,17 @@ class List extends PureComponent {
     };
 
 
-    reHandle = id =>{
+    reHandle = id => {
         const {dispatch} = this.props;
         dispatch(handleAgain(id));
         notification.success({
             message: '已经重新生成处理任务，请稍等...'
         });
+    };
+
+    show = record => {
+        const {dispatch} = this.props;
+        dispatch(showPic(record));
     };
 
     render() {
@@ -39,7 +45,7 @@ class List extends PureComponent {
                 title: "登录帐号",
                 dataIndex: "userName",
                 width: "150px"
-            },{
+            }, {
                 title: "所属公司",
                 dataIndex: "company",
                 width: "250px"
@@ -67,14 +73,24 @@ class List extends PureComponent {
                 }
             },
             {
+                title: "微信截图",
+                dataIndex: "type",
+                width: "180px",
+                render: (text, record) => {
+                    if (record.filePath) {
+                        return <a onClick={() => this.show(record)}>查看</a>
+                    }
+                },
+            },
+            {
                 title: "任务状态",
                 dataIndex: "taskStatus",
                 width: "150px",
-                render: (text, record)=>{
-                    if(record.taskType === '处理-位置监控' && record.taskStatus === '运行失败'){
+                render: (text, record) => {
+                    if (record.taskType === '处理-位置监控' && record.taskStatus === '运行失败') {
                         return <span>{text}<Tooltip placement="top" title={"重新处理"}><Icon
                             onClick={() => this.reHandle(record.id)} type="undo"/></Tooltip></span>
-                    }else{
+                    } else {
                         return text;
                     }
                 }
