@@ -95,9 +95,6 @@ class List extends PureComponent {
                 title: "创建时间",
                 dataIndex: "createTime",
                 width: "180px"
-            }, {
-                title: "操作日志",
-                dataIndex: "message",
             }
         ];
 
