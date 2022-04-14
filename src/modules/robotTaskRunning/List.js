@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {tableProps} from "../../lib/ui";
 import {query, reRun} from "./actions";
 import {getPrincipal} from "../../lib/identity";
+import {showPic} from "./actions";
 
 class List extends PureComponent {
 
@@ -22,6 +23,11 @@ class List extends PureComponent {
         dispatch(reRun(id)).then(() => {
             dispatch(query({"owner": getPrincipal().id, "queryRunning": true}));
         });
+    };
+
+    show = record => {
+        const {dispatch} = this.props;
+        dispatch(showPic(record));
     };
 
     showContent = (content) => {
@@ -95,6 +101,16 @@ class List extends PureComponent {
                 title: "创建时间",
                 dataIndex: "createTime",
                 width: "180px"
+            },
+            {
+                title: "微信截图",
+                dataIndex: "type",
+                width: "180px",
+                render: (text, record) => {
+                    if (record.filePath) {
+                        return <a onClick={() => this.show(record)}>查看</a>
+                    }
+                },
             }
         ];
 
