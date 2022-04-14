@@ -177,6 +177,26 @@ class List extends PureComponent {
                 },
             },
             {
+                title: "外呼时间",
+                dataIndex: "callTime",
+                width: "200px"
+            },
+            {
+                title: "是否接通",
+                dataIndex: "called",
+                width: "250px"
+            },
+            {
+                title: "接通时间",
+                dataIndex: "hangUpTime",
+                width: "250px"
+            },
+            {
+                title: "接通时长",
+                dataIndex: "seconds",
+                width: "120px"
+            },
+            {
                 title: "登录账号",
                 dataIndex: "owner",
                 width: "250px"

@@ -42,7 +42,7 @@ class Home extends PureComponent {
                 <div>
                     {robotList.map(data => (
                         <div style={{width: "19%", padding: '10px', float: 'left'}}>
-                            <Card title={data.owner + "(" + data.company + ")"} bordered={false}
+                            <Card title={data.company} bordered={false}
                                   style={{width: '100%'}}>
                                 {data.subRobots.map(item => (
                                     <div style={{float: 'left', width: "33%"}}>
@@ -72,7 +72,7 @@ class Home extends PureComponent {
                 <div>
                     {robotList.map(data => (
                         <div style={{width: "19%", padding: '10px', float: 'left'}}>
-                            <Card title={data.owner + "组"} bordered={false}
+                            <Card title={data.company} bordered={false}
                                   style={{width: '100%'}}>
                                 {data.subRobots.map(item => (
                                     <div style={{float: 'left', width: "33%"}}>
