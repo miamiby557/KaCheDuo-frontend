@@ -1,8 +1,8 @@
 import React, {PureComponent} from "react";
-import {Table} from "antd";
+import {Icon, notification, Table, Tooltip} from "antd";
 import {connect} from "react-redux";
 import {paginationProps, tableProps} from "../../lib/ui";
-import {query} from "./actions";
+import {handleAgain, query} from "./actions";
 import {getPrincipal} from "../../lib/identity";
 
 class List extends PureComponent {
@@ -15,6 +15,15 @@ class List extends PureComponent {
     onPageChange = (page, pageSize) => {
         const {dispatch, filter} = this.props;
         dispatch(query({"owner": getPrincipal().id, ...filter, page, pageSize}));
+    };
+
+
+    reHandle = id =>{
+        const {dispatch} = this.props;
+        dispatch(handleAgain(id));
+        notification.success({
+            message: '已经重新生成处理任务，请稍等...'
+        });
     };
 
     render() {
@@ -60,7 +69,15 @@ class List extends PureComponent {
             {
                 title: "任务状态",
                 dataIndex: "taskStatus",
-                width: "150px"
+                width: "150px",
+                render: (text, record)=>{
+                    if(record.taskType === '处理-位置监控' && record.taskStatus === '运行失败'){
+                        return <span>{text}<Tooltip placement="top" title={"重新处理"}><Icon
+                            onClick={() => this.reHandle(record.id)} type="undo"/></Tooltip></span>
+                    }else{
+                        return text;
+                    }
+                }
             },
             {
                 title: "创建时间",
