@@ -14,7 +14,6 @@ class ShowPicModal extends PureComponent {
 
     render() {
         const {loading, visible, model} = this.props;
-        const baseImg = 'data:image/png;base64, ' + model.fileBase64
         return (
             <Modal
                 title="查看图片"
@@ -24,7 +23,7 @@ class ShowPicModal extends PureComponent {
                 footer={null}
                 width="60%"
             >
-                <img src={baseImg} style={{ width: '100%' }}/>
+                <img src={"./api/image/" + model.filePath} style={{width: '100%', height: "600px"}}/>
             </Modal>
 
         );
