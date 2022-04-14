@@ -2,7 +2,17 @@ import React, {PureComponent} from "react";
 import {Divider, Icon, Popconfirm, Table, Tooltip} from "antd";
 import {connect} from "react-redux";
 import {paginationProps, tableProps} from "../../lib/ui";
-import {del, query, showUpdate, start, stop, updateDataSource, updateSubRobot} from "./actions";
+import {
+    del,
+    query,
+    showUpdate,
+    start,
+    startLocation,
+    stop,
+    stopLocation,
+    updateDataSource,
+    updateSubRobot
+} from "./actions";
 import {getPrincipal} from "../../lib/identity";
 
 class List extends PureComponent {
@@ -44,6 +54,20 @@ class List extends PureComponent {
         });
     };
 
+    handleStopLocation = id => {
+        const {dispatch} = this.props;
+        dispatch(stopLocation(id)).then(() => {
+            dispatch(query({'owner': getPrincipal().id}));
+        });
+    };
+
+    handleStartLocation = id => {
+        const {dispatch} = this.props;
+        dispatch(startLocation(id)).then(() => {
+            dispatch(query({'owner': getPrincipal().id}));
+        });
+    };
+
     hidePWD = (id, key, value) => {
         const {dispatch, dataSource} = this.props;
         const found = dataSource.find(item => item.id === id);
@@ -75,7 +99,7 @@ class List extends PureComponent {
                     width: "200px",
                     render: (text, record) => {
                         return <span>
-                        {text}{record.run ? "(启用)":"(禁用)"}
+                        {text}{record.run ? "(启用)" : "(禁用)"}
                     </span>
                     }
                 }, {
@@ -116,8 +140,8 @@ class List extends PureComponent {
                         {record.run ? <Popconfirm title="确定停止处置?" okText="是" cancelText="否"
                                                   onConfirm={() => this.handleStop(record.id)}>
                             <Tooltip placement="top" title={'禁用'}><a>停止处置</a></Tooltip>
-                        </Popconfirm>:<a onClick={() => this.handleStart(record.id)}
-                                         type="redo">启动处置</a>}
+                        </Popconfirm> : <a onClick={() => this.handleStart(record.id)}
+                                           type="redo">启动处置</a>}
                 </span>,
                 }, {
                     title: "",
@@ -139,7 +163,7 @@ class List extends PureComponent {
                             }}
                         >
                         {text}
-                    </a>{record.run ? "(启用)":"(禁用)"}
+                    </a>{record.run ? "(启用)" : "(禁用)"}
                     </span>
                 }
             }, {
@@ -161,7 +185,7 @@ class List extends PureComponent {
                 width: "200px",
                 render: (text, record) => {
                     return <span>
-                        {text}{record.run2 ? "(启用)":"(禁用)"}
+                        {text}{record.run2 ? "(启用)" : "(禁用)"}
                     </span>
                 }
             }, {
@@ -200,7 +224,7 @@ class List extends PureComponent {
                 title: '功能',
                 dataIndex: '',
                 key: '',
-                width: "280px",
+                width: "380px",
                 align: 'center',
                 render: (text, record) => <span>
                     {record.run ? <Popconfirm title="确定停止，子账号也会一起停止?" okText="是" cancelText="否"
@@ -212,6 +236,11 @@ class List extends PureComponent {
                                                onConfirm={() => this.handleStop(record.id2)}>
                         <a>停止处理</a>
                     </Popconfirm> : <a onClick={() => this.handleStart(record.id2)}>启用处理</a>}
+                    <Divider type="vertical"/>
+                    {record.runLocation ? <Popconfirm title="确定停止位置查询?" okText="是" cancelText="否"
+                                                      onConfirm={() => this.handleStopLocation(record.id2)}>
+                        <a>停止位置查询</a>
+                    </Popconfirm> : <a onClick={() => this.handleStartLocation(record.id2)}>启用位置查询</a>}
                     <Divider type="vertical"/>
                     <Popconfirm title="确定删除，子账号也会一起删除?" okText="是" cancelText="否"
                                 onConfirm={() => this.handleDelete(record.id)}>

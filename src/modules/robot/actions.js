@@ -30,7 +30,15 @@ export const stop = createThunkAction("ROBOT.STOP", params =>
     get("/robot/stop/" + params)
 );
 
+export const stopLocation = createThunkAction("ROBOT.STOP_LOCATION", params =>
+    get("/robot/stopLocation/" + params)
+);
+
 export const sendMail = createThunkAction("ROBOT.SEND_MAIL", params =>
     get("/home/testSendMail")
 );
 
+
+export const startLocation = createThunkAction("ROBOT.START_LOCATION", params =>
+    get("/robot/startLocation/" + params)
+);
