@@ -14,6 +14,7 @@ import location from "../modules/location/reducer.js";
 import screenShotTask from "../modules/screenShotTask/reducer.js";
 import screenShotTaskRunning from "../modules/screenShotTaskRunning/reducer.js";
 import phoneBill from "../modules/phoneBill/reducer.js";
+import phone from "../modules/phone/reducer.js";
 
 const rootReducer = combineReducers({
     home,
@@ -29,7 +30,8 @@ const rootReducer = combineReducers({
     location,
     screenShotTask,
     screenShotTaskRunning,
-    phoneBill
+    phoneBill,
+    phone
 });
 
 export default rootReducer;

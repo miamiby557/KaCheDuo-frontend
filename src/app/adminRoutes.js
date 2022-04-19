@@ -35,6 +35,15 @@ const adminRoutes = [
                 })
             }
         ]
+    },
+    {
+        path: '/phone',
+        title: '手机在线情况',
+        icon: 'phone',
+        component: Loadable({
+            loader: () => import('../modules/phone'),
+            loading: Loading
+        })
     }
 ];
 
