@@ -20,7 +20,7 @@ class Filter extends PureComponent {
         const {loading} = this.props;
         const filterSchema = [
             {
-                key: '1',
+                key: 'name',
                 field: 'name',
                 type: 'text',
                 expandable: true,
@@ -29,13 +29,22 @@ class Filter extends PureComponent {
                     initialValue :this.state.name
                 }
             },{
-                key: '2',
+                key: 'vehicleNo',
                 field: 'vehicleNo',
                 type: 'text',
                 expandable: true,
                 title: '车牌号码',
                 fieldOptions:{
                     initialValue :this.state.vehicleNo
+                }
+            },{
+                key: 'company',
+                field: 'company',
+                type: 'text',
+                expandable: true,
+                title: '公司',
+                fieldOptions:{
+                    initialValue :this.state.company
                 }
             }
 
