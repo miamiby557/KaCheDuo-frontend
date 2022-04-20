@@ -28,7 +28,11 @@ class List extends PureComponent {
             {
                 title: "微信ID",
                 dataIndex: "wxid",
-                width: "150px"
+                width: "250px"
+            },{
+                title: "发送时间",
+                dataIndex: "createTime",
+                width: "200px"
             },
             {
                 title: "内容",

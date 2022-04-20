@@ -152,6 +152,10 @@ class List extends PureComponent {
         }
         const columns = [
             {
+                title: "所属公司",
+                dataIndex: "company",
+                width: "250px"
+            }, {
                 title: "监控帐号",
                 dataIndex: "phone",
                 width: "200px",
@@ -201,10 +205,6 @@ class List extends PureComponent {
                                                  type="eye"/></span>
                     }
                 }
-            }, {
-                title: "所属公司",
-                dataIndex: "company",
-                width: "250px"
             }, {
                 title: "存活状态",
                 dataIndex: "alive",
