@@ -12,7 +12,7 @@ class CreateModal extends PureComponent {
             const {dispatch} = this.props;
             formEditor.validateFieldsAndScroll((err, values) => {
                 if (!err) {
-                    dispatch(create(values.phone)).then(action => {
+                    dispatch(create(values.no)).then(action => {
                         if (action.error !== true) {
                             formEditor.resetFields();
                             dispatch(hideCreate());

@@ -4,7 +4,7 @@ import {get} from "../../lib/http";
 export const showCreate = createAction("WECHAT.SHOW_CREATE");
 export const hideCreate = createAction("WECHAT.HIDE_CREATE");
 
-export const query = createThunkAction("WECHAT.QUERY", params =>
+export const query = createThunkAction("WECHAT.QUERY", () =>
     get("/wechat/query")
 );
 export const create = createThunkAction("WECHAT.CREATE", params =>

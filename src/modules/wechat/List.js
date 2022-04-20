@@ -59,7 +59,7 @@ class List extends PureComponent {
 
 const mapStateToProps = state => {
     return {
-        ...state.phone.list
+        ...state.wechat.list
     };
 };
 
