@@ -121,6 +121,14 @@ const userRoutes = [
             loader: () => import('../modules/robotLog'),
             loading: Loading
         })
+    }, {
+        path: '/wechat',
+        title: '微信管理',
+        icon: 'wechat',
+        component: Loadable({
+            loader: () => import('../modules/wechat'),
+            loading: Loading
+        })
     }
 ];
 
