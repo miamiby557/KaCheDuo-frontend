@@ -11,6 +11,11 @@ class Filter extends PureComponent {
     handleSearch = (values) => {
         const {dispatch,pageSize} = this.props;
         let fields = values;
+        if(fields.friend === "是"){
+            fields.friend = true;
+        }else if(fields.friend === "不是"){
+            fields.friend = false;
+        }
         this.setState({...fields});
         fields.owner = getPrincipal().id;
         dispatch(query({...fields,pageSize}));
@@ -18,6 +23,9 @@ class Filter extends PureComponent {
 
     render() {
         const {loading} = this.props;
+        const taskTypeList = [];
+        taskTypeList.push({'name': "是"});
+        taskTypeList.push({'name': "不是"});
         const filterSchema = [
             {
                 key: 'name',
@@ -45,6 +53,20 @@ class Filter extends PureComponent {
                 title: '公司',
                 fieldOptions:{
                     initialValue :this.state.company
+                }
+            }, {
+                key: 'friend',
+                field: 'friend',
+                type: 'listSelector',
+                expandable: true,
+                title: '是否好友',
+                fieldOptions: {
+                    initialValue: this.state.friend
+                },
+                controlProps: {
+                    dataSource: taskTypeList,
+                    labelField: "name",
+                    valueField: "name"
                 }
             }
 

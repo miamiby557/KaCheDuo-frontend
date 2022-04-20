@@ -163,6 +163,17 @@ class List extends PureComponent {
                 editable: true,
                 width: "220px"
             }, {
+                title: "是否好友",
+                dataIndex: "friend",
+                width: "200px",
+                render: (text, record) => {
+                    if (record.friend === true) {
+                        return <span>是</span>;
+                    } else {
+                        return <span>不是</span>;
+                    }
+                }
+            }, {
                 title: '功能',
                 dataIndex: '',
                 key: '',
