@@ -22,7 +22,7 @@ class List extends PureComponent {
         const columns = [
             {
                 title: "微信号",
-                dataIndex: "phone",
+                dataIndex: "no",
                 width: "150px",
             }, {
                 title: '功能',

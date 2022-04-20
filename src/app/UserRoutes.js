@@ -129,6 +129,14 @@ const userRoutes = [
             loader: () => import('../modules/wechat'),
             loading: Loading
         })
+    }, {
+        path: '/wechatLog',
+        title: '微信日志',
+        icon: 'sound',
+        component: Loadable({
+            loader: () => import('../modules/wechatLog'),
+            loading: Loading
+        })
     }
 ];
 

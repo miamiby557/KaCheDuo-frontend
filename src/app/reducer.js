@@ -16,6 +16,7 @@ import screenShotTaskRunning from "../modules/screenShotTaskRunning/reducer.js";
 import phoneBill from "../modules/phoneBill/reducer.js";
 import phone from "../modules/phone/reducer.js";
 import wechat from "../modules/wechat/reducer.js";
+import wechatLog from "../modules/wechatLog/reducer.js";
 
 const rootReducer = combineReducers({
     home,
@@ -33,7 +34,8 @@ const rootReducer = combineReducers({
     screenShotTaskRunning,
     phoneBill,
     phone,
-    wechat
+    wechat,
+    wechatLog
 });
 
 export default rootReducer;

@@ -11,9 +11,9 @@ class Filter extends PureComponent {
     handleSearch = (values) => {
         const {dispatch,pageSize} = this.props;
         let fields = values;
-        if(fields.friend === "是"){
+        if(fields.isFriend === "是"){
             fields.friend = true;
-        }else if(fields.friend === "不是"){
+        }else if(fields.isFriend === "不是"){
             fields.friend = false;
         }
         this.setState({...fields});
@@ -55,13 +55,13 @@ class Filter extends PureComponent {
                     initialValue :this.state.company
                 }
             }, {
-                key: 'friend',
-                field: 'friend',
+                key: 'isFriend',
+                field: 'isFriend',
                 type: 'listSelector',
                 expandable: true,
                 title: '是否好友',
                 fieldOptions: {
-                    initialValue: this.state.friend
+                    initialValue: this.state.isFriend
                 },
                 controlProps: {
                     dataSource: taskTypeList,
