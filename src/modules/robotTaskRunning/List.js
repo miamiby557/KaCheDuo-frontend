@@ -103,6 +103,11 @@ class List extends PureComponent {
                 width: "180px"
             },
             {
+                title: "开始运行时间",
+                dataIndex: "runTime",
+                width: "180px"
+            },
+            {
                 title: "微信截图",
                 dataIndex: "type",
                 width: "180px",
