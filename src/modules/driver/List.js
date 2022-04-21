@@ -228,7 +228,7 @@ class List extends PureComponent {
             <Table
                 {...tableProps}
                 columns={editColumns}
-                scroll={{x: 1500, y: 'calc(100vh - 350px)'}}
+                scroll={{x: 1500, y: 'calc(100vh - 380px)'}}
                 dataSource={dataSource}
                 components={components}
                 pagination={tablePagination}
