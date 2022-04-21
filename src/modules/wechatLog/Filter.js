@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {query} from "./actions";
 import FilterForm from "../../components/FilterForm";
 import {DATE_FORMAT} from "../../lib/func";
+import {notification} from "antd";
 
 
 class Filter extends PureComponent {
@@ -16,6 +17,15 @@ class Filter extends PureComponent {
             fields.createTimeEnd = fields.createTimeRange[1].format(DATE_FORMAT);
         }
         delete fields.createTimeRange;
+        if (fields.content !== undefined && fields.content !== null && fields.content.length > 0) {
+            // 必须选择时间范围
+            if (fields.createTimeStart === undefined || fields.createTimeStart === null || fields.createTimeEnd === undefined || fields.createTimeEnd === null) {
+                notification.error({
+                    message: '查询包含文字必须选择时间范围'
+                });
+                return;
+            }
+        }
         dispatch(query({...fields, pageSize}));
     };
 
@@ -23,6 +33,15 @@ class Filter extends PureComponent {
         const {loading} = this.props;
         const filterSchema = [
             {
+                key: 'wechat',
+                field: 'wechat',
+                type: 'text',
+                expandable: true,
+                title: '微信号',
+                fieldOptions: {
+                    initialValue: this.state.wechat
+                }
+            },{
                 key: 'wxid',
                 field: 'wxid',
                 type: 'text',
@@ -39,6 +58,15 @@ class Filter extends PureComponent {
                 title: '创建日期',
                 fieldOptions: {
                     initialValue: this.state.createTimeRange
+                }
+            }, {
+                key: 'content',
+                field: 'content',
+                type: 'text',
+                expandable: true,
+                title: '包含文字',
+                fieldOptions: {
+                    initialValue: this.state.content
                 }
             }
         ];

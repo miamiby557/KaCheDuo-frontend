@@ -26,6 +26,10 @@ class List extends PureComponent {
         } = this.props;
         const columns = [
             {
+                title: "微信号",
+                dataIndex: "wechat",
+                width: "250px"
+            },{
                 title: "微信ID",
                 dataIndex: "wxid",
                 width: "250px"
