@@ -68,6 +68,15 @@ class Filter extends PureComponent {
                     labelField: "name",
                     valueField: "name"
                 }
+            },{
+                key: 'vehicleNo',
+                field: 'vehicleNo',
+                type: 'text',
+                expandable: true,
+                title: '车牌号码',
+                fieldOptions: {
+                    initialValue: this.state.vehicleNo
+                }
             }, {
                 key: 'createTimeRange',
                 field: 'createTimeRange',
