@@ -1,5 +1,5 @@
 import React, {PureComponent} from "react";
-import {Divider, Icon, Popconfirm, Table, Tooltip} from "antd";
+import {Divider, Icon, notification, Popconfirm, Table, Tooltip} from "antd";
 import {connect} from "react-redux";
 import {paginationProps, tableProps} from "../../lib/ui";
 import {
@@ -28,8 +28,14 @@ class List extends PureComponent {
     };
 
     handleDelete = id => {
+        notification.info({
+            message: '正在删除'
+        });
         const {dispatch} = this.props;
         dispatch(del(id)).then(() => {
+            notification.success({
+                message: '删除成功'
+            });
             dispatch(query({'owner': getPrincipal().id}));
         });
     };
@@ -41,29 +47,53 @@ class List extends PureComponent {
     };
 
     handleStart = id => {
+        notification.info({
+            message: '正在启动'
+        });
         const {dispatch} = this.props;
         dispatch(start(id)).then(() => {
+            notification.success({
+                message: '启动成功'
+            });
             dispatch(query({'owner': getPrincipal().id}));
         });
     };
 
     handleStop = id => {
+        notification.info({
+            message: '正在停止'
+        });
         const {dispatch} = this.props;
         dispatch(stop(id)).then(() => {
+            notification.success({
+                message: '停止成功'
+            });
             dispatch(query({'owner': getPrincipal().id}));
         });
     };
 
     handleStopLocation = id => {
+        notification.info({
+            message: '正在停止'
+        });
         const {dispatch} = this.props;
         dispatch(stopLocation(id)).then(() => {
+            notification.success({
+                message: '停止成功'
+            });
             dispatch(query({'owner': getPrincipal().id}));
         });
     };
 
     handleStartLocation = id => {
+        notification.info({
+            message: '正在启动'
+        });
         const {dispatch} = this.props;
         dispatch(startLocation(id)).then(() => {
+            notification.success({
+                message: '启动成功'
+            });
             dispatch(query({'owner': getPrincipal().id}));
         });
     };
