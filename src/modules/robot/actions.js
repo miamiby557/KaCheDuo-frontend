@@ -42,3 +42,7 @@ export const sendMail = createThunkAction("ROBOT.SEND_MAIL", params =>
 export const startLocation = createThunkAction("ROBOT.START_LOCATION", params =>
     get("/robot/startLocation/" + params)
 );
+
+export const runOnceLocation = createThunkAction("ROBOT.RUN_ONCE_LOCATION", params =>
+    get("/robot/batchRunOnceLocation")
+);

@@ -72,6 +72,15 @@ class Filter extends PureComponent {
                     labelField: "name",
                     valueField: "name"
                 }
+            },{
+                key: 'userCompany',
+                field: 'userCompany',
+                type: 'text',
+                expandable: true,
+                title: '公司',
+                fieldOptions: {
+                    initialValue: this.state.userCompany
+                }
             }
         ];
         return (
