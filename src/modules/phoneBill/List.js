@@ -51,7 +51,7 @@ class List extends PureComponent {
                 dataIndex: "vehicleNo",
                 width: "180px"
             }, {
-                title: "账号",
+                title: "登录帐号",
                 dataIndex: "account",
                 width: "180px"
             },

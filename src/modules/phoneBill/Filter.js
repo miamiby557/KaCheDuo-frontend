@@ -59,6 +59,33 @@ class Filter extends PureComponent {
                 fieldOptions: {
                     initialValue: this.state.createTimeRange
                 }
+            },{
+                key: 'vehicleNo',
+                field: 'vehicleNo',
+                type: 'text',
+                expandable: true,
+                title: '车牌号码',
+                fieldOptions: {
+                    initialValue: this.state.vehicleNo
+                }
+            }, {
+                key: 'account',
+                field: 'account',
+                type: 'text',
+                expandable: true,
+                title: '登录帐号',
+                fieldOptions: {
+                    initialValue: this.state.account
+                }
+            },{
+                key: 'company',
+                field: 'company',
+                type: 'text',
+                expandable: true,
+                title: '公司',
+                fieldOptions: {
+                    initialValue: this.state.company
+                }
             }
         ];
         return (
