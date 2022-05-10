@@ -46,16 +46,20 @@ class Filter extends PureComponent {
             }, {
                 key: 'userName',
                 field: 'userName',
-                type: 'listSelector',
+                type: 'text',
                 expandable: true,
                 title: '登录帐号',
                 fieldOptions: {
                     initialValue: this.state.userName
-                },
-                controlProps: {
-                    dataSource: userNameList,
-                    labelField: "name",
-                    valueField: "name"
+                }
+            },{
+                key: 'company',
+                field: 'company',
+                type: 'text',
+                expandable: true,
+                title: '公司',
+                fieldOptions: {
+                    initialValue: this.state.company
                 }
             }
         ];

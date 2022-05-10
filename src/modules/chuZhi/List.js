@@ -179,7 +179,14 @@ class List extends PureComponent {
             {
                 title: "外呼时间",
                 dataIndex: "callTime",
-                width: "200px"
+                width: "200px",
+                render: (text) => {
+                    if (text && text.length > 19) {
+                        return text.substring(0, 19);
+                    } else {
+                        return text;
+                    }
+                }
             },
             {
                 title: "是否接通",
@@ -189,7 +196,14 @@ class List extends PureComponent {
             {
                 title: "接通时间",
                 dataIndex: "hangUpTime",
-                width: "250px"
+                width: "200px",
+                render: (text) => {
+                    if (text && text.length > 19) {
+                        return text.substring(0, 19);
+                    } else {
+                        return text;
+                    }
+                }
             },
             {
                 title: "接通时长",
