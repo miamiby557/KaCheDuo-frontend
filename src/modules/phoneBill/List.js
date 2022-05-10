@@ -84,7 +84,7 @@ class List extends PureComponent {
                 dataIndex: "answerTime",
                 width: "180px",
                 render: (text, record) => {
-                    if(text && text.indexOf("1970-01-01")){
+                    if(text && text.indexOf("1970-01-01") >= 0){
                         return "";
                     }
                     if (text && text.length > 19) {
@@ -130,7 +130,7 @@ class List extends PureComponent {
             <Table
                 {...tableProps}
                 columns={columns}
-                scroll={{x: 1500, y: 'calc(100vh - 350px)'}}
+                scroll={{x: 1500, y: 'calc(100vh - 450px)'}}
                 pagination={tablePagination}
                 dataSource={dataSource}
                 loading={loading}
