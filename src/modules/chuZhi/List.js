@@ -197,7 +197,10 @@ class List extends PureComponent {
                 title: "接通时间",
                 dataIndex: "hangUpTime",
                 width: "200px",
-                render: (text) => {
+                render: (text, record) => {
+                    if(text && text.indexOf("1970-01-01")){
+                        return "";
+                    }
                     if (text && text.length > 19) {
                         return text.substring(0, 19);
                     } else {

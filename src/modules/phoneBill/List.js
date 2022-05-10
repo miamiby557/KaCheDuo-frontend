@@ -1,5 +1,5 @@
 import React, {PureComponent} from "react";
-import {Table} from "antd";
+import {Modal, Table} from "antd";
 import {connect} from "react-redux";
 import {paginationProps, tableProps} from "../../lib/ui";
 import {query} from "./actions";
@@ -14,6 +14,19 @@ class List extends PureComponent {
     onPageChange = (page, pageSize) => {
         const {dispatch, filter} = this.props;
         dispatch(query({...filter, page, pageSize}));
+    };
+
+    showContent = (content) => {
+        Modal.info({
+            title: '详细内容',
+            content: (
+                <div>
+                    <p>{content}</p>
+                </div>
+            ),
+            onOk() {
+            },
+        });
     };
 
     render() {
@@ -34,6 +47,23 @@ class List extends PureComponent {
                 dataIndex: "called",
                 width: "180px"
             }, {
+                title: "车牌号",
+                dataIndex: "vehicleNo",
+                width: "180px"
+            }, {
+                title: "账号",
+                dataIndex: "account",
+                width: "180px"
+            },
+            {
+                title: "所属公司",
+                dataIndex: "company",
+                width: "250px",
+                render: (text, record) => (
+                    <span
+                        onClick={() => this.showContent(text)}>{text && text.length > 20 ? text.substring(0, 20) + "..." : text}</span>
+                )
+            }, {
                 title: "总呼叫时长/秒",
                 dataIndex: "duration",
                 width: "150px"
@@ -52,7 +82,17 @@ class List extends PureComponent {
             }, {
                 title: "通话开始时间",
                 dataIndex: "answerTime",
-                width: "180px"
+                width: "180px",
+                render: (text, record) => {
+                    if(text && text.indexOf("1970-01-01")){
+                        return "";
+                    }
+                    if (text && text.length > 19) {
+                        return text.substring(0, 19);
+                    } else {
+                        return text;
+                    }
+                }
             }, {
                 title: "通话结束时间",
                 dataIndex: "releaseTime",
