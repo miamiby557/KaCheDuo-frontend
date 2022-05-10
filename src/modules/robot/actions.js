@@ -39,6 +39,11 @@ export const sendMail = createThunkAction("ROBOT.SEND_MAIL", params =>
 );
 
 
+export const sendMailOnceCompany = createThunkAction("ROBOT.SEND_MAIL", params =>
+    get("/home/testSendMailOnceCompany/" + params)
+);
+
+
 export const startLocation = createThunkAction("ROBOT.START_LOCATION", params =>
     get("/robot/startLocation/" + params)
 );

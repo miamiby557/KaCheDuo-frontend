@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import {paginationProps, tableProps} from "../../lib/ui";
 import {
     del,
-    query,
+    query, sendMailOnceCompany,
     showUpdate,
     start,
     startLocation,
@@ -69,6 +69,19 @@ class List extends PureComponent {
                 message: '停止成功'
             });
             dispatch(query({'owner': getPrincipal().id}));
+        });
+    };
+
+
+    sendEmail = id => {
+        notification.info({
+            message: '正在发送'
+        });
+        const {dispatch} = this.props;
+        dispatch(sendMailOnceCompany(id)).then(() => {
+            notification.success({
+                message: '发送成功，请等待接收邮件'
+            });
         });
     };
 
@@ -184,7 +197,11 @@ class List extends PureComponent {
             {
                 title: "所属公司",
                 dataIndex: "company",
-                width: "250px"
+                width: "250px",
+                render: (text, record) => {
+                    return <span>{text + " "}<Icon onClick={() => this.sendEmail(record.id)}
+                                                   type="mail"/></span>
+                }
             }, {
                 title: "监控帐号",
                 dataIndex: "phone",
