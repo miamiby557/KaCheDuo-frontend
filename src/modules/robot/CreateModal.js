@@ -95,7 +95,7 @@ class CreateModal extends PureComponent {
     handleCreate = () => {
         const formEditor = this.formEditor.props.form;
         if (formEditor) {
-            const {dispatch, subRobotList} = this.props;
+            const {dispatch, subRobotList, page, pageSize} = this.props;
             formEditor.validateFieldsAndScroll((err, values) => {
                 if (!err) {
                     values.subRobotList = subRobotList;
@@ -104,7 +104,7 @@ class CreateModal extends PureComponent {
                         if (action.error !== true) {
                             formEditor.resetFields();
                             dispatch(hideCreate());
-                            dispatch(query({'owner': getPrincipal().id}));
+                            dispatch(query({'owner': getPrincipal().id, page, pageSize}));
                         }
                     });
                 }
@@ -125,7 +125,7 @@ class CreateModal extends PureComponent {
         dispatch(hideCreate());
     };
 
-    onValuesChange = value =>{
+    onValuesChange = value => {
         const {dispatch} = this.props;
         dispatch(updateModel(value));
     };
@@ -239,7 +239,7 @@ class CreateModal extends PureComponent {
                         }
                     }
                 ]
-            },{
+            }, {
                 title: '处理、位置监控帐号信息',
                 fields: [
                     {
@@ -303,7 +303,9 @@ class CreateModal extends PureComponent {
 const mapStateToProps = state => {
     return {
         ...state.robot.create,
-        subRobotList: state.robot.subRobot.data
+        subRobotList: state.robot.subRobot.data,
+        page: state.robot.list.page,
+        pageSize: state.robot.list.pageSize
     };
 };
 

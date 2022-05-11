@@ -199,8 +199,10 @@ class List extends PureComponent {
                 dataIndex: "company",
                 width: "250px",
                 render: (text, record) => {
-                    return <span>{text + " "}<Icon onClick={() => this.sendEmail(record.id)}
-                                                   type="mail"/></span>
+                    return <span>{text + " "}<Popconfirm title="确定发送一次邮件?" okText="是" cancelText="否"
+                                                         onConfirm={() => this.sendEmail(record.id)}>
+                        <Icon type="mail"/>
+                    </Popconfirm></span>
                 }
             }, {
                 title: "监控帐号",

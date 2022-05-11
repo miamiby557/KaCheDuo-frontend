@@ -1,6 +1,6 @@
 import React, {PureComponent} from "react";
 import {connect} from "react-redux";
-import {Button, Icon, notification} from "antd";
+import {Button, Icon, notification, Popconfirm} from "antd";
 import {runOnceLocation, sendMail, showCreate} from "./actions";
 
 class Toolbar extends PureComponent {
@@ -38,8 +38,14 @@ class Toolbar extends PureComponent {
         return (
             <div className="actions">
                 <Button onClick={this.handleShowCreate}><Icon type="plus"/>新增</Button>
-                <Button onClick={this.handleSendMail}>一键推送GPS监控邮件</Button>
-                <Button onClick={this.handleRunLocationOnce}>运行一次所有账号位置监控</Button>
+                <Popconfirm title="确定一键推送GPS监控邮件?" okText="是" cancelText="否"
+                            onConfirm={() => this.handleSendMail()}>
+                    <Button>一键推送GPS监控邮件</Button>
+                </Popconfirm>
+                <Popconfirm title="确定运行一次所有账号位置监控?" okText="是" cancelText="否"
+                            onConfirm={() => this.handleRunLocationOnce()}>
+                    <Button>运行一次所有账号位置监控</Button>
+                </Popconfirm>
             </div>
 
         );

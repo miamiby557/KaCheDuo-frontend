@@ -95,7 +95,7 @@ class UpdateModal extends PureComponent {
     handleCreate = () => {
         const formEditor = this.formEditor.props.form;
         if (formEditor) {
-            const {dispatch, subRobotList, id} = this.props;
+            const {dispatch, subRobotList, id, page, pageSize} = this.props;
             formEditor.validateFieldsAndScroll((err, values) => {
                 if (!err) {
                     values.subRobotList = subRobotList;
@@ -105,7 +105,7 @@ class UpdateModal extends PureComponent {
                         if (action.error !== true) {
                             formEditor.resetFields();
                             dispatch(hideUpdate());
-                            dispatch(query({'owner': getPrincipal().id}));
+                            dispatch(query({'owner': getPrincipal().id, page, pageSize}));
                         }
                     });
                 }
@@ -303,7 +303,9 @@ class UpdateModal extends PureComponent {
 const mapStateToProps = state => {
     return {
         ...state.robot.update,
-        subRobotList: state.robot.subRobot.data
+        subRobotList: state.robot.subRobot.data,
+        page: state.robot.list.page,
+        pageSize: state.robot.list.pageSize
     };
 };
 
