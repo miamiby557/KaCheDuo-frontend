@@ -195,6 +195,12 @@ class List extends PureComponent {
         }
         const columns = [
             {
+                title: '序号',
+                width: "50px",
+                render:(text,record,index)=>`${index+1}`,
+                fixed: "left"
+            },
+            {
                 title: "所属公司",
                 dataIndex: "company",
                 width: "250px",

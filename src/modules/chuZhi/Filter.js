@@ -15,6 +15,10 @@ class Filter extends PureComponent {
         if (fields.happenTime) {
             fields.happenTime = fields.happenTime.format(DATE_FORMAT);
         }
+        if (fields.createTimeRange && fields.createTimeRange.length > 1) {
+            fields.createTimeStart = fields.createTimeRange[0].format(DATE_FORMAT);
+            fields.createTimeEnd = fields.createTimeRange[1].format(DATE_FORMAT);
+        }
         delete fields.createTimeRange;
         fields.owner = getPrincipal().id;
         dispatch(query({...fields, pageSize}));
@@ -23,7 +27,7 @@ class Filter extends PureComponent {
     render() {
         const {loading, robots} = this.props;
         const userNameList = [];
-        robots.forEach(name=>userNameList.push({'name': name}));
+        robots.forEach(name => userNameList.push({'name': name}));
         const filterSchema = [
             {
                 key: 'vehicleNo',
@@ -52,7 +56,7 @@ class Filter extends PureComponent {
                 fieldOptions: {
                     initialValue: this.state.userName
                 }
-            },{
+            }, {
                 key: 'company',
                 field: 'company',
                 type: 'text',
@@ -60,6 +64,15 @@ class Filter extends PureComponent {
                 title: '公司',
                 fieldOptions: {
                     initialValue: this.state.company
+                }
+            }, {
+                key: 'createTimeRange',
+                field: 'createTimeRange',
+                type: 'dateRangePicker',
+                expandable: true,
+                title: '创建日期',
+                fieldOptions: {
+                    initialValue: this.state.createTimeRange
                 }
             }
         ];

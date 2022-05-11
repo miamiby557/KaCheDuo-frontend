@@ -3,6 +3,7 @@ const defaultState = {
     page: 1,
     pageSize: 20,
     totalElements: 0,
+    filter: {},
     dataSource: []
 };
 export default function list(state = defaultState, action) {
@@ -18,7 +19,7 @@ export default function list(state = defaultState, action) {
                     item.show1 = false;
                     item.show2 = false;
                     if (item.subRobots && item.subRobots.length > 0) {
-                        item.subRobots.forEach(data=>{
+                        item.subRobots.forEach(data => {
                             data.show1 = false;
                         });
                     }
@@ -33,7 +34,7 @@ export default function list(state = defaultState, action) {
                 totalElements: payload.totalElements
             };
         case 'ROBOT.QUERY_PENDING':
-            return {...state, loading: true};
+            return {...state, loading: true, filter: {...payload}};
         case 'ROBOT.UPDATE_DATASOURCE':
             return {...state, dataSource: [...payload]};
         default:
