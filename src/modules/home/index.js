@@ -7,6 +7,9 @@ import {queryByAdmin, querySelf} from "./actions"; // 统一引入样式
 import robotWork from './robot-work.jpg'
 import robotNoWork from './robot-no-work.jpg'
 
+import robotWork2 from './work.png'
+import robotNoWork2 from './stop.png'
+
 
 class Home extends PureComponent {
     componentDidMount() {
@@ -48,11 +51,11 @@ class Home extends PureComponent {
                                     <div style={{float: 'left', width: "33%"}}>
                                         {item.alive ?
                                             <Tooltip placement="top" title={"在线，上次在线时间：" + item.lastTime}>
-                                                <div style={{width: '100%'}}><img src={robotWork} width={'100%'}
+                                                <div style={{width: '100%'}}><img src={robotWork2} width={'100%'}
                                                                                   alt="在线"/></div>
                                             </Tooltip> :
                                             <Tooltip placement="top" title={"下线"}>
-                                                <div style={{width: '100%'}}><img src={robotNoWork} width={'100%'}
+                                                <div style={{width: '100%'}}><img src={robotNoWork2} width={'100%'}
                                                                                   alt="下线"/></div>
                                             </Tooltip>}
                                         <div style={{
@@ -78,11 +81,11 @@ class Home extends PureComponent {
                                     <div style={{float: 'left', width: "33%"}}>
                                         {item.alive ?
                                             <Tooltip placement="top" title={"在线，上次在线时间：" + item.lastTime}>
-                                                <div style={{width: '100%'}}><img src={robotWork} width={'100%'}
+                                                <div style={{width: '100%'}}><img src={robotWork2} width={'100%'}
                                                                                   alt="在线"/></div>
                                             </Tooltip> :
                                             <Tooltip placement="top" title={"下线"}>
-                                                <div style={{width: '100%'}}><img src={robotNoWork} width={'100%'}
+                                                <div style={{width: '100%'}}><img src={robotNoWork2} width={'100%'}
                                                                                   alt="下线"/></div>
                                             </Tooltip>}
                                         <div style={{

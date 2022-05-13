@@ -132,7 +132,7 @@ class List extends PureComponent {
             <Table
                 {...tableProps}
                 columns={columns}
-                scroll={{x: 1500, y: 'calc(100vh - 350px)'}}
+                scroll={{x: 1500, y: 'calc(100vh - 400px)'}}
                 pagination={tablePagination}
                 dataSource={dataSource}
                 loading={loading}

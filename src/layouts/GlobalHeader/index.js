@@ -2,7 +2,7 @@ import React, {PureComponent} from "react";
 import {Avatar, Divider, Dropdown, Icon, Menu, Spin, TreeSelect} from "antd";
 import {Link} from "react-router-dom";
 import styles from "./index.module.less";
-import avatar from "../../assets/user_avatar.png";
+import avatar from "../../assets/logo.png";
 import {getPrincipal} from "../../lib/identity";
 
 const TreeNode = TreeSelect.TreeNode;
