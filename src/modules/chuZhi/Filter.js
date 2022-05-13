@@ -20,8 +20,8 @@ class Filter extends PureComponent {
             fields.createTimeEnd = fields.createTimeRange[1].format(DATE_FORMAT);
         }
         if (fields.disposeTimeRange && fields.disposeTimeRange.length > 1) {
-            fields.disposeTimeStart = fields.createTimeRange[0].format(DATE_FORMAT);
-            fields.disposeTimeEnd = fields.createTimeRange[1].format(DATE_FORMAT);
+            fields.disposeTimeStart = fields.disposeTimeRange[0].format(DATE_FORMAT);
+            fields.disposeTimeEnd = fields.disposeTimeRange[1].format(DATE_FORMAT);
         }
         delete fields.createTimeRange;
         delete fields.disposeTimeRange;
@@ -34,29 +34,29 @@ class Filter extends PureComponent {
         const userNameList = [];
         robots.forEach(name => userNameList.push({'name': name}));
         const statusList = [];
+        statusList.push({value:'抽烟报警',label:'抽烟报警'});
+        statusList.push({value:'接打手机报警',label:'接打手机报警'});
+        statusList.push({value:'玩手机报警',label:'玩手机报警'});
+        statusList.push({value:'超速报警',label:'超速报警'});
+        statusList.push({value:'生理疲劳报警',label:'生理疲劳报警'});
+        statusList.push({value:'未系安全带报警',label:'未系安全带报警'});
+        statusList.push({value:'双脱把报警',label:'双脱把报警'});
         statusList.push({value:'ADAS主动抓拍事件',label:'ADAS主动抓拍事件'});
         statusList.push({value:'DSM自动抓拍事件',label:'DSM自动抓拍事件'});
         statusList.push({value:'不目视前方报警',label:'不目视前方报警'});
-        statusList.push({value:'超速报警',label:'超速报警'});
         statusList.push({value:'超员报警',label:'超员报警'});
         statusList.push({value:'车道偏离报警',label:'车道偏离报警'});
         statusList.push({value:'车距过近报警',label:'车距过近报警'});
         statusList.push({value:'车辆碰撞报警',label:'车辆碰撞报警'});
-        statusList.push({value:'抽烟报警',label:'抽烟报警'});
         statusList.push({value:'道路标识超限报警',label:'道路标识超限报警'});
         statusList.push({value:'道路标志识别事件',label:'道路标志识别事件'});
         statusList.push({value:'红外阻断型墨镜失效报警',label:'红外阻断型墨镜失效报警'});
         statusList.push({value:'驾驶员身份识别',label:'驾驶员身份识别'});
-        statusList.push({value:'接打手机报警',label:'接打手机报警'});
         statusList.push({value:'紧急报警',label:'紧急报警'});
         statusList.push({value:'偏离驾驶位报警',label:'偏离驾驶位报警'});
         statusList.push({value:'频繁变道报警',label:'频繁变道报警'});
         statusList.push({value:'设备通讯失效报警',label:'设备通讯失效报警'});
         statusList.push({value:'设备遮挡失效报警',label:'设备遮挡失效报警'});
-        statusList.push({value:'生理疲劳报警',label:'生理疲劳报警'});
-        statusList.push({value:'双脱把报警',label:'双脱把报警'});
-        statusList.push({value:'玩手机报警',label:'玩手机报警'});
-        statusList.push({value:'未系安全带报警',label:'未系安全带报警'});
         statusList.push({value:'行人碰撞报警',label:'行人碰撞报警'});
         statusList.push({value:'压实线报警',label:'压实线报警'});
         statusList.push({value:'障碍物报警',label:'障碍物报警'});
