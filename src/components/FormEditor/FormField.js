@@ -96,7 +96,7 @@ const getFieldControl = ({
         case 'select':
             const {options = [], mode, rest} = controlProps;
             return (
-                <Select {...rest} mode={mode} placeholder={placeholder || title}>
+                <Select {...rest} mode={mode} style={{"width": 200}} placeholder={placeholder || title}>
                     {options.map((item, index) => (
                         <Option key={index} value={item.value}>
                             {item.label}
