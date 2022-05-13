@@ -12,7 +12,7 @@ const PublicLayout = props => {
           <div className={styles.header}>
             <Link to="/">
               <img alt="logo" className={styles.logo} src={logo} />
-              <span className={styles.title}>两客一危一重服务系统</span>
+              <span className={styles.title}>两客监控服务系统</span>
             </Link>
           </div>
           <div className={styles.desc}>为您实现信息化管理，数据化经营</div>

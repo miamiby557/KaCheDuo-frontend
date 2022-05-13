@@ -12,7 +12,7 @@ import Principal from "../components/Principal";
 import userRoutes from "./UserRoutes";
 
 
-const APP_NAME = "两客一危一重服务系统";
+const APP_NAME = "两客监控服务系统";
 
 const getLayout = ({isPublic, layout}) => {
     if (layout) return layout;
